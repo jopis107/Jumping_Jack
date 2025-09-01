@@ -7,14 +7,13 @@ using Quaternion = UnityEngine.Quaternion;
 namespace JumpingJack{
     public class TileSpawner : MonoBehaviour{
         [SerializeField]
-        private int tileStartCount = 10; //how many straight tiles will be at the beggining of the game
+        private int tileStartCount = 10;
         [SerializeField]
-        private int minimumStraightTiles = 3; //minimum number of tiles between the turns
+        private int minimumStraightTiles = 3;
         [SerializeField]
-        private int maximumStraightTiles = 15; //maximum number of tiles between the turns
+        private int maximumStraightTiles = 15; 
         [SerializeField]
         private GameObject startingTile;
-        // TileSpawner.cs
 
         [SerializeField]
         private GameObject speedBoostPrefab;
@@ -29,17 +28,17 @@ namespace JumpingJack{
         private Vector3 currentTileDirection = Vector3.forward;
         private GameObject prevTile;
 
-        private List<GameObject> currentTiles; // tracking current tiles
-        private List<GameObject> currentObstacles; // tracking current obstacles
+        private List<GameObject> currentTiles;
+        private List<GameObject> currentObstacles; 
 
         private void Start(){
             currentTiles = new List<GameObject>();
             currentObstacles = new List<GameObject>();
 
-            Random.InitState(System.DateTime.Now.Millisecond); //this gives us very unique random number
+            Random.InitState(System.DateTime.Now.Millisecond); // vrlo jedinstven nasumičan broj
 
             for (int i = 0; i < tileStartCount; i++){
-                SpawnTile(startingTile.GetComponent<Tile>()); //spawning the starting tile and false is for obstacles
+                SpawnTile(startingTile.GetComponent<Tile>()); 
             }
 
             SpawnTile(SelectRandomGameObjectFromList(turnTiles).GetComponent<Tile>());
@@ -61,14 +60,13 @@ namespace JumpingJack{
 
             if (tile.type == TileType.STRAIGHT)
                 currentTileLocation += Vector3.Scale(prevTile.GetComponent<Renderer>().bounds.size, currentTileDirection);
-            //offset for spawning the next tile in the right direction so they don't overlap
         }
 
         private void SpawnSpeedBoost(){
-            if (speedBoostPrefab == null) return; // Provjera da ne zaboravimo dodijeliti prefab
+            if (speedBoostPrefab == null) return;
             
             Vector3 spawnPos = currentTileLocation;
-            spawnPos.y += 1f; // Malo podignemo munju od poda da ne "tone"
+            spawnPos.y += 1f; 
             Instantiate(speedBoostPrefab, spawnPos, Quaternion.identity);
         }
 
@@ -89,7 +87,7 @@ namespace JumpingJack{
         public void AddNewDirection(Vector3 direction){
             currentTileDirection = direction;
             DeletePreviousTiles();
-            // Calculate the new tile placement scale based on the previous tile's size and the current direction
+            
             Vector3 tilePlacementScale;
             if (prevTile.GetComponent<Tile>().type == TileType.SIDEWAYS){
                 tilePlacementScale = Vector3.Scale(prevTile.GetComponent<Renderer>().bounds.size / 2 + (Vector3.one * startingTile.GetComponent<BoxCollider>().size.z / 2), currentTileDirection);
