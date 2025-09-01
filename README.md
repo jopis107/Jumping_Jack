@@ -79,7 +79,9 @@ Opis: Čim igra započne, lik automatski počinje trčati prema naprijed početn
 
 Vizualni prikaz:
 
-![alt text](image-1.png)
+<img width="554" height="926" alt="image" src="https://github.com/user-attachments/assets/3fd90859-6ed8-49f8-889d-7232d4fcc80a" />
+
+
 
 Kod `PlayerController.cs`:
 Logika za kretanje i ubrzavanje nalazi se unutar `Update()` metode.
@@ -105,7 +107,8 @@ Opis: Pritiskom na tipku 'W', igrač može izvesti skok kako bi izbjegao niske p
 
 Vizualni prikaz:
 
-![alt text](image-2.png)
+<img width="463" height="826" alt="image" src="https://github.com/user-attachments/assets/7c73c7bf-115c-4f42-a85d-5531ef2f24f7" />
+
 
 Kod `PlayerController.cs`:
 Skok se aktivira putem InputAction događaja i primjenjuje vertikalnu brzinu na lika.
@@ -124,7 +127,8 @@ Opis: Pritiskom na tipku 'S', igrač može klizati kako bi izbjegao visoke prepr
 
 Vizualni prikaz:
 
-![alt text](image-3.png)
+<img width="459" height="823" alt="image" src="https://github.com/user-attachments/assets/0414b9e7-67cc-46e4-89f3-4fafb02df9ec" />
+
 
 Kod `PlayerController.cs`:
 Klizanje je implementirano kao korutina (Coroutine) kako se ne bi blokirao ostatak igre.
@@ -158,8 +162,10 @@ Opis: Na kraju svake dionice staze nalazi se raskrižje. Pritiskom na tipku 'A' 
 
 Vizualni prikaz:
 
-![alt text](image-4.png)
-![alt text](image-5.png)
+<img width="241" height="425" alt="image" src="https://github.com/user-attachments/assets/cb61296f-eceb-4fdf-9d62-a65a1998a4e7" />
+
+<img width="237" height="423" alt="image" src="https://github.com/user-attachments/assets/c4a46661-64de-46c2-9e8b-58ac80f4106d" />
+
 
 Kod `PlayerController.cs`:
 Logika skretanja podijeljena je u tri dijela: detekcija unosa, provjera zone i izvođenje rotacije.
@@ -200,7 +206,8 @@ Opis: Ako igrač udari u prepreku, igra je gotova. Sudar se detektira provjerom 
 
 Vizualni prikaz:
 
-![alt text](image-6.png)
+<img width="236" height="416" alt="image" src="https://github.com/user-attachments/assets/207654c1-1250-47e0-bd06-21d7f8326538" />
+
 
 Kod `PlayerController.cs`:
 Koristi se OnControllerColliderHit metoda koja se automatski poziva pri svakom sudaru.
@@ -218,7 +225,8 @@ Opis: Igra završava sudarom, padom sa staze ili pogrešnim skretanjem. Prikazuj
 
 Vizualni prikaz:
 
-![alt text](image-7.png)
+<img width="234" height="414" alt="image" src="https://github.com/user-attachments/assets/3bc87adf-24fc-4988-afe3-435cd500a618" />
+
 
 Kod `PlayerController.cs`:
 Metoda GameOver() zaustavlja igru i aktivira događaj koji će prikazati UI za kraj igre.
