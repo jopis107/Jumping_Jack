@@ -63,7 +63,8 @@ Opis: Nakon pokretanja aplikacije, igraču se prikazuje glavni izbornik. Klikom 
 
 Vizualni prikaz:
 
-![alt text](image.png)
+<img width="552" height="928" alt="image" src="https://github.com/user-attachments/assets/7cd0bce3-c9d5-4c35-91a3-b6231f655a80" />
+
 
 Kod:
 Logika za prebacivanje scena nalazi se u skripti `MainMenuManager.cs`
