@@ -37,7 +37,7 @@ Sustav za unos: Unity Input System
 
 IDE: Visual Studio
 
-Kako pokrenuti projekt
+# Kako pokrenuti projekt
 
 Klonirajte repozitorij: git clone https://github.com/jopis107/Jumping_Jack.git
 
@@ -47,7 +47,7 @@ U Project prozoru, otvorite scenu MainMenu iz mape Assets/Scenes.
 
 Pritisnite Play za pokretanje igre.
 
-Arhitektura projekta
+# Arhitektura projekta
 
 Logika igre podijeljena je u dvije glavne skripte:
 
