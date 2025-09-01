@@ -106,28 +106,25 @@ namespace JumpingJack.Player{
             score += scoreMultiplier * Time.deltaTime;
             scoreUpdateEvent.Invoke((int)score);
 
-            // 1) translacija naprijed
+            // translacija naprijed
             controller.Move(transform.forward * playerSpeed * Time.deltaTime);
 
-            // 4) gravitacija
+            // gravitacija
             if (grounded && velocity.y < 0f) velocity.y = -2f;
 
-            // Izračunaj postotak trenutne brzine u odnosu na raspon od početne do maksimalne brzine.
             float speedPercentage = Mathf.InverseLerp(initialPlayerSpeed, maximumPlayerSpeed, playerSpeed);
 
-            // Koristi postotak brzine da pronađeš odgovarajuću vrijednost gravitacije između početne i maksimalne.
             float currentGravity = Mathf.Lerp(initialGravityMagnitude, maximumGravityMagnitude, speedPercentage);
 
-            // Primijeni izračunatu gravitaciju (s fall multiplierom kao i prije)
             float g = currentGravity * (velocity.y < 0f ? fallMultiplier : 1f);
             velocity.y -= g * Time.deltaTime;
             controller.Move(velocity * Time.deltaTime);
 
-            // 5) detekcija pada s ploče
+            //  detekcija pada s ploče
             if (!grounded && velocity.y < -0.1f) airTime += Time.deltaTime; else airTime = 0f;
             if (airTime > 0.5f) { GameOver(); return; }
 
-            // 6) ubrzavanje
+            // ubrzavanje
             if (playerSpeed < maximumPlayerSpeed)
             {
                 playerSpeed += playerSpeedIncreaseRate * Time.deltaTime;
@@ -177,7 +174,6 @@ namespace JumpingJack.Player{
             sliding = false;
         }
 
-        // 1) INPUT – okida skretanje
         private void PlayerTurn(InputAction.CallbackContext context)
         {
             Vector3? turnPosition = CheckTurn(context.ReadValue<float>());
@@ -191,7 +187,6 @@ namespace JumpingJack.Player{
             Turn(context.ReadValue<float>(), turnPosition.Value);
         }
 
-        // 2) PROVJERA ZONE ZA SKRETANJE – gledaj malo ispred i uzmi najbliži valjani tile
         private Vector3? CheckTurn(float turnValue)
         {
             Collider[] hitColiders = Physics.OverlapSphere(transform.position, .1f, turnLayer);
@@ -210,14 +205,13 @@ namespace JumpingJack.Player{
         }
 
 
-        // 3) IZVEDBA SKRETANJA – JEDINO mjesto gdje rotiramo root!
         private void Turn(float turnValue, Vector3 turnPosition)
         {
             Vector3 tempPlayerPosition = new Vector3(turnPosition.x, transform.position.y, turnPosition.z);
             controller.enabled = false;
             transform.position = tempPlayerPosition;
             controller.enabled = true;
-            // Postavljamo novu CILJANU rotaciju.
+            
             targetRotation *= Quaternion.Euler(0f, turnValue * 90f, 0f);
         }
 
